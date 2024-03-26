@@ -74,8 +74,7 @@ class ProductService
         $variant->setOnHand((int) $params["quantity"]);
         $variant->setTracked((int) $params["quantity"] > 0);
 
-        $cp = $this->createChannelPricing($variant, (int) $params["price"], (int) $params["price"]);
-        $variant->addChannelPricing($cp);
+        $this->createChannelPricing($variant, (int) $params["price"], (int) $params["price"]);
 
         $product->setMainTaxon($taxon);
         $product->addChannel($channel);
