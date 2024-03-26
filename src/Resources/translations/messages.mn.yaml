@@ -1,6 +1,7 @@
 nextstore_sylius_live_module:
     ui:
         live: Шууд дамжуулалт
+        live_detail: Шууд дамжуулалт
         lives: Шууд дамжуулалтууд
         edit_live: Шууд дамжуулалтийг янзлах
         new_live: Шинэ шууд дамжуулалт үүсгэх
