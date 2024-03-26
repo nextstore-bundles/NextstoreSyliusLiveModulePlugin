@@ -1,0 +1,42 @@
+nextstore_sylius_live_module_admin_live:
+    resource: |
+        alias: nextstore_sylius_live_module.live
+        section: admin
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        grid: nextstore_sylius_live_module_admin_live
+        vars:
+            all:
+                subheader: nextstore_sylius_live_module.live.subheader
+            index:
+                icon: 'video'
+    type: sylius.resource
+    prefix: /admin
+
+nextstore_sylius_live_module_admin_live_detail:
+    path: /admin/lives/{id}/detail
+    methods: ["GET"]
+    defaults:
+        _controller: nextstore_sylius_live_module.controller.admin_live::detail
+        _sylius:
+
+nextstore_sylius_live_module_admin_live_import_products:
+    path: /admin/lives/{id}/import-products
+    methods: ["POST"]
+    defaults:
+        _controller: nextstore_sylius_live_module.controller.admin_live::importProducts
+        _sylius:
+
+nextstore_sylius_live_module_admin_live_remove_product:
+    path: /admin/lives/{id}/remove-product/{productId}
+    methods: ["GET"]
+    defaults:
+        _controller: nextstore_sylius_live_module.controller.admin_live::removeProduct
+        _sylius:
+
+nextstore_sylius_live_module_admin_live_feature_product:
+    path: /admin/lives/{id}/feature-product/{productId}
+    methods: ["GET"]
+    defaults:
+        _controller: nextstore_sylius_live_module.controller.admin_live::featureProduct
+        _sylius:

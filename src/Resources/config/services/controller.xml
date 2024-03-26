@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="nextstore_sylius_live_module.controller.admin_live"
+            class="Nextstore\SyliusLiveModulePlugin\Controller\Admin\LiveController"
+        >
+            <argument type="service" id="twig" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="nextstore_sylius_live_module.service.live" />
+            <argument type="service" id="sylius.context.currency" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+            <tag name="controller.service_arguments" />
+        </service>
+    </services>
+</container>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="Nextstore\SyliusLiveModulePlugin\Model\Live" shortName="Live" >
+
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>shop:live:read</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="validation_groups">sylius</attribute>
+
+        <collectionOperations>
+            <collectionOperation name="shop_get" >
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/lives</attribute>
+                <attribute name="filters">
+                    <attribute>live.order_filter</attribute>
+                    <attribute>live.search_filter</attribute>
+                    <attribute>live.boolean_filter</attribute>
+                </attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">shop:live:list</attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+            <itemOperation name="shop_get_detail">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/lives/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">shop:live:read</attribute>
+                </attribute>
+            </itemOperation>
+        </itemOperations>
+        <property name="id" identifier="true" writable="false"/>
+        <property name="name" />
+        <property name="code" />
+        <property name="fbLiveEmbedCode" />
+        <property name="fbLiveUrl" />
+        <property name="description"/>
+        <property name="startDate"/>
+        <property name="enabled"/>
+        <property name="shop"/>
+        <property name="featuredProduct"/>
+    </resource>
+</resources>

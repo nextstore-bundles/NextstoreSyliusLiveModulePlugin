@@ -1,0 +1,17 @@
+nextstore_sylius_live_module:
+    ui:
+        live: Live stream
+        lives: Live streams
+        edit_live: Edit live stream
+        new_live: Create live stream
+        upload_excel: Upload excel file
+        add_products: Add products
+        start_date: Start date
+        end_date: End date
+        fb_live_url: Facebook live url
+        fb_live_embed_code: Facebook live embed code
+        shop: Shop
+    live:
+        subheader: Manage live stream
+
+sylius.ui.is_featured: Featured

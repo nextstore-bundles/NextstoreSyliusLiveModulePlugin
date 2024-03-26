@@ -1,0 +1,26 @@
+Arguments: 
+  /Users/tsolmonkhorloo/.nvm/versions/node/v21.1.0/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /Users/tsolmonkhorloo/.nvm/versions/node/v21.1.0/bin:/opt/homebrew/opt/postgresql@15/bin:/opt/homebrew/opt/postgres:/opt/homebrew/opt/mysql:/opt/homebrew/bin:/opt/homebrew/opt/php@8.0/sbin:/opt/homebrew/opt/php@8.0/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/go/bin:/Users/tsolmonkhorloo/.cargo/bin:/Users/tsolmonkhorloo/Library/Application Support/JetBrains/Toolbox/scripts:/opt/local/bin/flutter/bin:/bin:/Users/tsolmonkhorloo/go/bin:/Users/tsolmonkhorloo/go/bin/air
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  21.1.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: EEXIST: file already exists, mkdir '/Users/tsolmonkhorloo/Documents/job-projects/NextstoreSyliusLiveModulePlugin/node_modules'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

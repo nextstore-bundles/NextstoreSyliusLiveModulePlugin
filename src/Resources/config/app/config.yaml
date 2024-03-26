@@ -1,0 +1,18 @@
+imports:
+    - "@NextstoreSyliusLiveModulePlugin/Resources/config/grids/live.yaml"
+
+services:
+    live.search_filter:
+        parent: "api_platform.doctrine.orm.search_filter"
+        arguments: [{ code: "exact", name: "partial", shop: "exact" }]
+        tags: ["api_platform.filter"]
+
+    live.order_filter:
+        parent: "api_platform.doctrine.orm.order_filter"
+        arguments: [{ startDate: "DESC" }]
+        tags: ["api_platform.filter"]
+
+    live.boolean_filter:
+        parent: "api_platform.doctrine.orm.boolean_filter"
+        arguments: [{ enabled: ~ }]
+        tags: ["api_platform.filter"]
