@@ -34,13 +34,10 @@ class LiveController extends AbstractController
         $currencyCode = $this->currencyContext->getCurrencyCode();
 
         return new Response(
-            $this->twig->render(
-                "@NextstoreSyliusLiveModulePlugin/Admin/Live/detail.html.twig",
-                [
-                    "live" => $live,
-                    "currencyCode" => $currencyCode,
-                ]
-            )
+            $this->twig->render("@NextstoreSyliusLiveModulePlugin/Admin/Live/detail.html.twig", [
+                "live" => $live,
+                "currencyCode" => $currencyCode,
+            ])
         );
     }
 
@@ -53,10 +50,7 @@ class LiveController extends AbstractController
             Assert::isInstanceOf($live, Live::class);
 
             $file = $request->files->get("excel-file");
-            $importedRows = $this->liveService->importProductsFromExcel(
-                $file,
-                $live
-            );
+            $importedRows = $this->liveService->importProductsFromExcel($file, $live);
             $this->addFlash("success", "Succesfully imported " . $importedRows);
         } catch (\Exception $e) {
             $this->addFlash("error", $e->getMessage());
@@ -74,19 +68,14 @@ class LiveController extends AbstractController
 
             $productId = $request->get("productId");
             /** @var Product $product */
-            $product = $this->em
-                ->getRepository(Product::class)
-                ->find((int) $productId);
+            $product = $this->em->getRepository(Product::class)->find((int) $productId);
             Assert::isInstanceOf($product, Product::class);
 
             $live->removeProduct($product);
             $this->em->persist($live);
             $this->em->flush();
 
-            $this->addFlash(
-                "success",
-                "Succesfully removed " . $product->getName()
-            );
+            $this->addFlash("success", "Succesfully removed ");
         } catch (\Exception $e) {
             $this->addFlash("error", $e->getMessage());
         }
@@ -104,19 +93,14 @@ class LiveController extends AbstractController
 
             $productId = $request->get("productId");
             /** @var Product $product */
-            $product = $this->em
-                ->getRepository(Product::class)
-                ->find((int) $productId);
+            $product = $this->em->getRepository(Product::class)->find((int) $productId);
             Assert::isInstanceOf($product, Product::class);
 
             $live->setFeaturedProduct($product);
             $this->em->persist($live);
             $this->em->flush();
 
-            $this->addFlash(
-                "success",
-                "Succesfully featured " . $product->getName()
-            );
+            $this->addFlash("success", "Succesfully featured " . $product->getName());
         } catch (\Exception $e) {
             $this->addFlash("error", $e->getMessage());
         }
