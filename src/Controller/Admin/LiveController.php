@@ -71,9 +71,11 @@ class LiveController extends AbstractController
             $product = $this->em->getRepository(Product::class)->find((int) $productId);
             Assert::isInstanceOf($product, Product::class);
 
-            $live->removeProduct($product);
-            $this->em->persist($live);
-            $this->em->flush();
+            $conn = $this->em->getConnection();
+            $conn->delete('nextstore_live_product', [
+                'live_id' => $live->getId(),
+                'product_id' => $product->getId()
+            ]);
 
             $this->addFlash("success", "Succesfully removed ");
         } catch (\Exception $e) {
