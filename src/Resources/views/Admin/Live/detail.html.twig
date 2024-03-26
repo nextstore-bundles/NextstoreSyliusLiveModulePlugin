@@ -1,0 +1,132 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% import '@SyliusAdmin/Macro/breadcrumb.html.twig' as breadcrumb %}
+{% import "@SyliusAdmin/Common/Macro/money.html.twig" as money %}
+
+{% block title %}{{ 'nextstore_sylius_live_module.ui.live_detail'|trans }} | {{ live.name }}{% endblock %}
+
+{% block content %}
+    <div class="ui stackable two column grid">
+        <div class="ui six wide column">
+            <h1 class="ui header">
+                <i class="circular video icon"></i>
+                <div class="content">
+                    {{ 'nextstore_sylius_live_module.ui.live'|trans }} #{{ live.id }}
+                    <div class="sub header">
+                        <div class="ui horizontal divided list">
+                            <div class="item">
+                                {{'nextstore_sylius_live_module.live.subheader'|trans}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h1>
+        </div>
+        <div class="ui ten wide column right aligned">
+        </div>
+    </div>
+    {% set breadcrumbs = [
+        { label: 'sylius.ui.administration'|trans, url: path('sylius_admin_dashboard') },
+        { label: 'nextstore_sylius_live_module.ui.lives'|trans, url: path('nextstore_sylius_live_module_admin_live_index') },
+        { label: '#'~live.id}
+    ]
+    %}
+
+    {{ breadcrumb.crumble(breadcrumbs) }}
+
+    <div class="ui segment">
+        <div style="display: flex; justify-content: space-between; width: '100%';">
+            <strong style="font-size: 18;">{{live.products|length}} products</strong>
+            <div style="display: flex; justify-content: space-between;">
+                {# <button
+                    type="button"
+                    class="ui compact labeled icon button blue"
+                >
+                    <i class="icon plus"></i>
+                    {{'nextstore_sylius_live_module.ui.add_product'|trans}}
+                </button> #}
+                <form
+                    method="post"
+                    enctype="multipart/form-data"
+                    action="{{path('nextstore_sylius_live_module_admin_live_import_products', {id: live.id})}}"
+                >
+                    <div class="ui action input">
+                        <input
+                            name="excel-file"
+                            id="fileSelect"
+                            type="file"
+                            required
+                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                            class="ui input focus"
+                        />
+                        <button class="ui blue right labeled icon button">
+                            <i class="upload icon"></i>
+                            {{ 'nextstore_sylius_live_module.ui.upload_excel'|trans }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <table class="ui very basic table">
+            <thead>
+                <tr>
+                    <th>{{'sylius.ui.code'|trans}}</th>
+                    <th>{{'sylius.ui.name'|trans}}</th>
+                    <th>{{'sylius.ui.price'|trans}}</th>
+                    <th>{{'sylius.ui.quantity'|trans}}</th>
+                    <th>{{'sylius.ui.description'|trans}}</th>
+                    <th> {{'sylius.ui.is_featured'|trans}}</th>
+                    <th>{{'sylius.ui.actions'|trans}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in live.products %}
+                {% set variant = product.variants[0] %}
+                {% set cp = variant.channelPricings.first %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.code}}</td>
+                    <td>{{ money.format(cp.price, currencyCode) }}</td>
+                    <td>{{ variant.onHand }}</td>
+                    <td>{{product.description}}</td>
+                    <td>
+                        {% if live.featuredProduct %}
+                            {% if live.featuredProduct.id == product.id %}
+                                <span class='ui label green'>
+                                    True
+                                </span>
+                            {% else %}
+                                <span class='ui label red'>
+                                    False
+                                </span>
+                            {% endif %}
+                        {% else %}
+                            <span class='ui label red'>
+                                False
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class='ui buttons'>
+                            <a
+                                class="ui button"
+                                href='{{path('nextstore_sylius_live_module_admin_live_feature_product', {id: live.id, productId: product.id})}}'
+                            >
+                                <i class='ui icon star'></i>
+                                {{'sylius.ui.is_featured'|trans}}
+                            </a>
+                            <a
+                                class="ui button red"
+                                href='{{path('nextstore_sylius_live_module_admin_live_remove_product', {id: live.id, productId: product.id})}}'
+                            >
+                                <i class='ui icon trash'></i>
+                                {{'sylius.ui.delete'|trans}}
+                            </a>
+                        </div>
+                    <td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+nextstore_sylius_live_module:
+    ui:
+        live: Шууд дамжуулалт
+        lives: Шууд дамжуулалтууд
+        edit_live: Шууд дамжуулалтийг янзлах
+        new_live: Шинэ шууд дамжуулалт үүсгэх
+        upload_excel: Excel файл оруулах
+        add_products: Бараа нэмэх
+        start_date: Эхлэх хугацаа
+        end_date: Дуусах хугацаа
+        fb_live_url: Facebook шууд дамжуулалтын линк
+        fb_live_embed_code: Facebook шууд дамжуулалтын код
+        shop: Дэлгүүр
+    live:
+        subheader: Шууд дамжуулалтыг удирдах
+
+sylius.ui.is_featured: Онцлох

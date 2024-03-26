@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Nextstore\SyliusLiveModulePlugin
+        psr4_prefix: Nextstore\SyliusLiveModulePlugin

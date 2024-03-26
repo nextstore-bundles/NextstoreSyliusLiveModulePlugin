@@ -1,0 +1,2 @@
+nextstore_sylius_live_module_admin:
+    resource: "@NextstoreSyliusLiveModulePlugin/Resources/config/routing/admin.yaml"

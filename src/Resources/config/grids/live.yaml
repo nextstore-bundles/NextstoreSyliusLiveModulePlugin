@@ -1,0 +1,75 @@
+sylius_grid:
+    templates:
+        action:
+            live_products: "@NextstoreSyliusLiveModulePlugin/Admin/Grid/Actions/_live_products.html.twig"
+    grids:
+        nextstore_sylius_live_module_admin_live:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "Nextstore\\SyliusLiveModulePlugin\\Model\\Live"
+            sorting:
+                startDate: desc
+            fields:
+                startDate:
+                    type: datetime
+                    label: nextstore_sylius_live_module.ui.start_date
+                    path: startDate
+                    sortable: startDate
+                    options:
+                        format: d-m-Y H:i:s
+                code:
+                    type: string
+                    label: sylius.ui.code
+                    sortable: ~
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: ~
+                shop:
+                    type: string
+                    label: sylius.ui.name
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code, name]
+                name:
+                    type: string
+                    label: sylius.ui.name
+                code:
+                    type: string
+                    label: sylius.ui.code
+                startDate:
+                    type: date
+                    label: sylius.ui.date
+                    options:
+                        field: startDate
+                        inclusive_to: true
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    add_products:
+                        type: live_products
+                        label: nextstore_sylius_live_module.ui.add_products
+                        options:
+                            link:
+                                route: nextstore_sylius_live_module_admin_live_detail
+                                parameters:
+                                    id: resource.id
+                    update:
+                        type: update
+                    delete:
+                        type: delete

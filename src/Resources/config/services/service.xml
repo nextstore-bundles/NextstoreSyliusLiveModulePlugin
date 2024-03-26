@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="nextstore_sylius_live_module.service.aws_file_uploader"
+            class="Nextstore\SyliusLiveModulePlugin\Uploader\AwsFileUploader" public="true">
+            <argument type="service" id="parameter_bag" />
+        </service>
+        <service id="nextstore_sylius_live_module.validator.product"
+            class="Nextstore\SyliusLiveModulePlugin\Validator\ValidatorProduct" public="true">
+        </service>
+        <service id="nextstore_sylius_live_module.validator.file"
+            class="Nextstore\SyliusLiveModulePlugin\Validator\ValidatorFile" public="true">
+        </service>
+
+        <service id="nextstore_sylius_live_module.service.live"
+            class="Nextstore\SyliusLiveModulePlugin\Service\LiveService" public="true">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="nextstore_sylius_live_module.validator.file" />
+            <argument type="service" id="nextstore_sylius_live_module.service.aws_file_uploader" />
+            <argument type="service" id="parameter_bag" />
+            <argument type="service" id="nextstore_sylius_live_module.service.product" />
+        </service>
+
+        <service id="nextstore_sylius_live_module.service.product"
+            class="Nextstore\SyliusLiveModulePlugin\Service\ProductService" public="true">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="sylius.factory.product" />
+            <argument type="service" id="sylius.context.channel" />
+            <argument type="service" id="nextstore_sylius_live_module.validator.product" />
+            <argument type="service" id="sylius.generator.slug" />
+        </service>
+    </services>
+</container>

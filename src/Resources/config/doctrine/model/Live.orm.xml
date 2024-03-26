@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Nextstore\SyliusLiveModulePlugin\Model\Live"
+        table="nextstore_live">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="code" column="code" type="string" nullable="false" />
+        <field name="name" column="name" type="string" nullable="false" />
+        <field name="description" column="description" type="string" nullable="true" />
+        <field name="fbLiveUrl" column="fb_live_url" type="string" nullable="true" />
+        <field name="fbLiveEmbedCode" column="fb_live_embed_code" type="string" nullable="true" />
+        <field name="startDate" column="start_date" type="datetime" nullable="false" />
+        <field name="enabled" column="enabled" type="boolean" nullable="false" />
+        <field name="shop" column="shop" type="string" nullable="true" />
+
+        <many-to-one field="featuredProduct"
+            target-entity="Sylius\Component\Product\Model\ProductInterface">
+            <join-column name="featured_product_id" referenced-column-name="id" nullable="true"/>
+        </many-to-one>
+
+        <many-to-many
+            field="products"
+            target-entity="Sylius\Component\Product\Model\ProductInterface"
+            fetch="EAGER"
+        >
+            <order-by>
+                <order-by-field name="id" />
+            </order-by>
+
+            <join-table name="nextstore_live_product">
+                <join-columns>
+                    <join-column name="live_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </mapped-superclass>
+
+</doctrine-mapping>
