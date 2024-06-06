@@ -12,8 +12,8 @@
         <field name="code" column="code" type="string" nullable="false" />
         <field name="name" column="name" type="string" nullable="false" />
         <field name="description" column="description" type="string" nullable="true" />
-        <field name="fbLiveUrl" column="fb_live_url" type="string" nullable="true" />
-        <field name="fbLiveEmbedCode" column="fb_live_embed_code" type="string" nullable="true" />
+        <field name="fbLiveUrl" column="fb_live_url" type="text" nullable="true" />
+        <field name="fbLiveEmbedCode" column="fb_live_embed_code" type="text" nullable="true" />
         <field name="startDate" column="start_date" type="datetime" nullable="false" />
         <field name="enabled" column="enabled" type="boolean" nullable="false" />
         <field name="shop" column="shop" type="string" nullable="true" />
