@@ -8,6 +8,7 @@ use Nextstore\SyliusLiveModulePlugin\Model\Live;
 use Nextstore\SyliusLiveModulePlugin\Service\LiveService;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Currency\Context\CurrencyContextInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -94,9 +95,9 @@ class LiveController extends AbstractController
             Assert::isInstanceOf($live, Live::class);
 
             $productId = $request->get("productId");
-            /** @var Product $product */
-            $product = $this->em->getRepository(Product::class)->find((int) $productId);
-            Assert::isInstanceOf($product, Product::class);
+            /** @var ProductInterface $product */
+            $product = $this->em->getRepository(ProductInterface::class)->find((int) $productId);
+            Assert::isInstanceOf($product, ProductInterface::class);
 
             $live->setFeaturedProduct($product);
             $this->em->persist($live);
