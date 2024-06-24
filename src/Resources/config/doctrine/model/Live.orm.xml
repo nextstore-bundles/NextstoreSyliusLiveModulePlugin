@@ -27,6 +27,7 @@
             field="products"
             target-entity="Sylius\Component\Product\Model\ProductInterface"
             fetch="EAGER"
+            inversedBy="lives"
         >
             <order-by>
                 <order-by-field name="id" />
