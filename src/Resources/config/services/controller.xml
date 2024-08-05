@@ -17,5 +17,15 @@
             </call>
             <tag name="controller.service_arguments" />
         </service>
+        <service id="nextstore_sylius_live_module.controller.get_current_live_action"
+            class="Nextstore\SyliusLiveModulePlugin\Controller\Action\GetCurrentLiveAction"
+        >
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="serializer" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+            <tag name="controller.service_arguments" />
+        </service>
     </services>
 </container>

@@ -1,0 +1,5 @@
+nextstore_sylius_live_get_current_live:
+    path: /api/v2/shop/current-live
+    methods: ["GET"]
+    defaults:
+        _controller: nextstore_sylius_live_module.controller.get_current_live_action

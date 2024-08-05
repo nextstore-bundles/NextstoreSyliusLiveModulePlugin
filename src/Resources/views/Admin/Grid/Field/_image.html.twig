@@ -1,0 +1,5 @@
+{% if data %}
+    <img class="ui small image" src="{{ data|imagine_filter('sylius_small') }}" alt="{{ data }}">
+{% else %}
+    <img class="ui small image" src="https://placehold.it/50x50">
+{% endif %}
