@@ -11,6 +11,12 @@ sylius_grid:
             sorting:
                 startDate: desc
             fields:
+                thumbnail:
+                    type: twig
+                    label: sylius.ui.image
+                    path: thumbnailPath
+                    options:
+                        template: "@NextstoreSyliusLiveModulePlugin/Admin/Grid/Field/_image.html.twig"
                 startDate:
                     type: datetime
                     label: nextstore_sylius_live_module.ui.start_date

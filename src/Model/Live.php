@@ -7,6 +7,7 @@ namespace Nextstore\SyliusLiveModulePlugin\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Product\Model\ProductInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 class Live implements LiveInterface
 {
@@ -37,6 +38,9 @@ class Live implements LiveInterface
     private $products;
 
     private ?ProductInterface $featuredProduct;
+
+    private ?string $thumbnailPath;
+    private ?File $thumbnailFile;
 
     public function __construct()
     {
@@ -158,5 +162,25 @@ class Live implements LiveInterface
     public function setFeaturedProduct(?ProductInterface $featuredProduct): void
     {
         $this->featuredProduct = $featuredProduct;
+    }
+
+    public function setThumbnailFile(?File $file): void
+    {
+        $this->thumbnailFile = $file;
+    }
+
+    public function getThumbnailFile(): ?File
+    {
+        return $this->thumbnailFile;
+    }
+
+    public function setThumbnailPath(?string $path): void
+    {
+        $this->thumbnailPath = $path;
+    }
+
+    public function getThumbnailPath(): ?string
+    {
+        return $this->thumbnailPath;
     }
 }

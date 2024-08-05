@@ -17,6 +17,7 @@
         <field name="startDate" column="start_date" type="datetime" nullable="false" />
         <field name="enabled" column="enabled" type="boolean" nullable="false" />
         <field name="shop" column="shop" type="string" nullable="true" />
+        <field name="thumbnailPath" column="thumbnail_path" type="string" nullable="true" />
 
         <many-to-one field="featuredProduct"
             target-entity="Sylius\Component\Product\Model\ProductInterface">

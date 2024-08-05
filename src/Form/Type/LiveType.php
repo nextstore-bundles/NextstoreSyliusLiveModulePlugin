@@ -9,6 +9,7 @@ use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -55,6 +56,9 @@ class LiveType extends AbstractResourceType
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'sylius.ui.enabled'
+            ])
+            ->add('thumbnailFile', FileType::class, [
+                'label' => 'sylius.ui.image'
             ])
         ;
     }
