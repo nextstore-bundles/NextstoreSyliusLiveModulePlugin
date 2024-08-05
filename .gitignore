@@ -6,6 +6,8 @@
 !/etc/build/.gitignore
 
 /tests/Application/yarn.lock
+/tests/Application/public/file/excel/
+/tests/Application/public/media/image/
 
 /.phpunit.result.cache
 /behat.yml
