@@ -34,6 +34,10 @@
             <group>shop:live:read</group>
             <group>shop:live:list</group>
         </attribute>
+        <attribute name="startDate">
+            <group>shop:live:read</group>
+            <group>shop:live:list</group>
+        </attribute>
         <attribute name="featuredProduct">
             <group>shop:live:read</group>
             <group>shop:live:list</group>
