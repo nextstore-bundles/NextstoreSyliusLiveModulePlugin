@@ -40,7 +40,7 @@ class Live implements LiveInterface
     private ?ProductInterface $featuredProduct;
 
     private ?string $thumbnailPath;
-    private ?File $thumbnailFile;
+    private ?File $thumbnailFile = null;
 
     public function __construct()
     {
