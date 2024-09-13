@@ -59,6 +59,7 @@ class ProductService
 
         /** @var ProductInterface $product */
         $product = $this->productFactory->createWithVariant();
+        $product->setOrderType('order');
         $product->setName($params["name"]);
         $product->setCode($params["code"] ?? $this->generateProductCode());
         $product->setSlug($this->slugGenerator->generate($params["name"]));
