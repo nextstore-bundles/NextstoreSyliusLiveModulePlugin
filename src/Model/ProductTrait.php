@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 trait ProductTrait
 {
     /**
+     * @var LiveInterface[]|Collection
      * @ORM\ManyToMany(targetEntity="Nextstore\SyliusLiveModulePlugin\Model\Live", mappedBy="products")
      */
     private $lives;
@@ -21,10 +22,17 @@ trait ProductTrait
         return $this->lives;
     }
 
-    public function addLive(Live $live): void
+    public function addLive(?LiveInterface $live): void
     {
         if (!$this->lives->contains($live)) {
             $this->lives->add($live);
+        }
+    }
+
+    public function removeLive(?LiveInterface $live): void
+    {
+        if ($this->lives->contains($live)) {
+            $this->lives->removeElement($live);
         }
     }
 }
