@@ -183,4 +183,21 @@ class Live implements LiveInterface
     {
         return $this->thumbnailPath;
     }
+
+    public function getEnabledProducts(): Collection
+    {
+        return $this->products->filter(function (ProductInterface $product) {
+            return $product->isEnabled();
+        });
+    }
+
+    public function getEnabledProductsTotal(): int
+    {
+        return $this->getEnabledProducts()->count();
+    }
+
+    public function getProductsTotal(): int
+    {
+        return $this->getProducts()->count();
+    }
 }

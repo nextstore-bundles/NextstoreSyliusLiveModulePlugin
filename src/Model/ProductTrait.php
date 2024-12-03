@@ -20,4 +20,11 @@ trait ProductTrait
     {
         return $this->lives;
     }
+
+    public function addLive(Live $live): void
+    {
+        if (!$this->lives->contains($live)) {
+            $this->lives->add($live);
+        }
+    }
 }
