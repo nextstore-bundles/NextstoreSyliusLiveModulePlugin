@@ -42,6 +42,6 @@ class GetCurrentLiveAction extends AbstractController
         }
 
         $res = $this->normalizer->normalize($live, null, ['groups' => 'shop:live:read']);
-        return new JsonResponse($res);
+        return new JsonResponse(["data" =>$res]);
     }
 }
